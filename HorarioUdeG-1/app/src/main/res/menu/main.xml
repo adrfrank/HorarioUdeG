@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.consultaweb.MainActivity" >
+
+    <item
+        android:id="@+id/salir"
+        android:orderInCategory="100"
+        android:title="@string/exit"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/OtroCalendario"
+        android:orderInCategory="100"
+        android:title="@string/otroCalendario"
+        app:showAsAction="never"/>
+</menu>
