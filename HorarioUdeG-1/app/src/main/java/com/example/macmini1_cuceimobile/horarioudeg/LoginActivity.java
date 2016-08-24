@@ -47,8 +47,10 @@ import java.util.Calendar;
 import java.util.List;
 
 
-
-public class MainActivity extends Activity{
+/*
+*  Activity for login manage
+* */
+public class LoginActivity extends Activity{
     private Button boton;
     private Spinner spinner;
     private String usuario;
@@ -102,11 +104,13 @@ public class MainActivity extends Activity{
             }
         });
 
-        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.layout_menu);
-        ListView listView = (ListView) findViewById(R.id.lista_drawer);
-        ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add("");
-        listView.setAdapter(new AdaptadorDrawer(this, arrayList, linearLayoutOculto));
+        //TODO: Verificar si esto se necesita
+
+//        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.layout_menu);
+//        ListView listView = (ListView) findViewById(R.id.lista_drawer);
+//        ArrayList<String> arrayList = new ArrayList<String>();
+//        arrayList.add("");
+//        listView.setAdapter(new AdaptadorDrawer(this, arrayList, linearLayoutOculto));
 
 
 
@@ -160,7 +164,7 @@ public class MainActivity extends Activity{
 
 
     private void enviarAHorario() {
-        Intent i = new Intent(this, Main2Activity.class);
+        Intent i = new Intent(this, HorarioActivity.class);
         startActivity(i);
         finish();
     }
@@ -480,7 +484,7 @@ public class MainActivity extends Activity{
         protected void onPostExecute(String aux) {
             System.out.println(aux);
             if (loginValido(aux)) {
-                Intent i = new Intent(getApplication(), Main2Activity.class);
+                Intent i = new Intent(getApplication(), HorarioActivity.class);
                 guardarDatosA(aux);
 
                 if(!procesaJsonE(aux)){

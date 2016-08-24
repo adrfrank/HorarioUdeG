@@ -24,10 +24,11 @@ public class Conexion extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		Log.d("Logcat", "Creando tabla de alumno");
 		db.execSQL(query);
+		Log.d("Logcat", "Creando tala de materias");
 		db.execSQL(query2);
-
-		Log.d("Logcat", "animales creados");
+		Log.d("Logcat", "Base de datos creada");
 	}
 
 	@Override
@@ -40,5 +41,12 @@ public class Conexion extends SQLiteOpenHelper {
 		            //executeSQLScript(db, "update_v3.sql");
 		    }
 		}
+	}
+
+	public void deleteData(){
+		SQLiteDatabase db = getWritableDatabase();
+		db.execSQL("DELETE FROM alumno");
+		db.execSQL("DELETE FROM materias");
+		db.close();
 	}
 }

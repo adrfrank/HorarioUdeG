@@ -134,11 +134,11 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 		//ASÍ FUNCIONA SIN PROBLEMA
 
 		TextView textView = null;
-		Button boton = null;
 
 		if (convertView == null) {
 			convertView = inflater.inflate(R.layout.group, null);
 		}
+		//this loads the group view (The white box for the classes)
 
 		textView = (TextView) convertView.findViewById(R.id.textView1);
 		textView.setText(child.get(childPosition));
@@ -149,7 +149,6 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 				/* restricciones de gps
 				   1) checar que este en el campus
 				   2) despues de media hora de clase y hasta la hora
-
                   */
                   String CadenaTemp = (child.get(childPosition));
                   String largoCadena = String.valueOf(CadenaTemp.length());
@@ -185,36 +184,11 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 					  Log.d("profesor",linea4[1]);
 
                       AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                      builder.setTitle("        PON DEDO!     ")
-                              .setMessage(child.get(childPosition) + largoCadena + " "+grupo)
-                              .setCancelable(false)
-                              .setPositiveButton("Falto a Clase", new DialogInterface.OnClickListener() {
+                      builder.setTitle(R.string.tutorDialogTitle)
+							  .setMessage(R.string.tutorDialogMessage)
+                              .setCancelable(true)
+                              .setPositiveButton(R.string.tutorDialogAccept, new DialogInterface.OnClickListener() {
                                   public void onClick(DialogInterface dialog, int id) {
-                                      //envio datos a server
-									/*  HttpClient httpclient = new DefaultHttpClient();
-									  HttpPost httppost = new HttpPost("http://dcc.netai.net/insertaDatosDedocucei.php");
-
-									  try {
-										  // Add your data
-										  List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-										  nameValuePairs.add(new BasicNameValuePair("hora", linea1[1]));
-										  nameValuePairs.add(new BasicNameValuePair("modulo", linea2[1] + "," + linea3[1]));
-										  nameValuePairs.add(new BasicNameValuePair("materia", linea0[1]));
-										  nameValuePairs.add(new BasicNameValuePair("maestro", linea4[1]));
-										  httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-										  httpclient.execute(httppost);
-										  try {
-											  HttpResponse response = httpclient.execute(httppost);
-										  } catch (Exception e) {
-
-										  }
-									  }catch (IOException e) {
-										  // TODO Auto-generated catch block
-									  }
-
-									  // Execute HTTP Post Request
-
-										  //Log.d("Responde servidor",response.toString());*/
 									  StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
 									  StrictMode.setThreadPolicy(policy);
@@ -241,7 +215,7 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 											  if (httpEntity != null) {
 												  aux = EntityUtils.toString(httpEntity);
 											  } else {
-												  aux = "3Error";
+												  aux = "Error";
 											  }
 											  Log.d("Servidor", aux);
 										  } catch (UnsupportedEncodingException e) {
@@ -253,29 +227,18 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 										  } finally {
 										  }
 									  }else{
-										  AlertDialog alertDialog = new AlertDialog.Builder(context).create(); //Read Update
-										  alertDialog.setTitle("Datos inválidos");
-										  alertDialog.setMessage("Necesita ser horario correcto y encontrarse dentro de CUCEI");
-
-										  alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-											  public void onClick(DialogInterface dialog, int which) {
-												  // here you can add functions
-												  dialog.cancel();
-											  }
-										  });
-
-										  alertDialog.show();  //<-- See This!
-										 // throw  new IllegalArgumentException("Hora o ubicación no válida");
+										showNotValidRequestDialog();
 									  }
                                       dialog.cancel();
                                   }
                               })
-                              .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                              .setNegativeButton(R.string.tutorDialogCancel, new DialogInterface.OnClickListener() {
                                   @Override
                                   public void onClick(DialogInterface dialog, int which) {
                                       dialog.cancel();
                                   }
-                              });
+                              })
+					  		;
 
                       AlertDialog alert = builder.create();
                       alert.show();
@@ -286,6 +249,21 @@ public class MyExpandableAdapter extends BaseExpandableListAdapter {
 
 
 		return convertView;
+	}
+
+	public void showNotValidRequestDialog(){
+		AlertDialog alertDialog = new AlertDialog.Builder(context).create(); //Read Update
+		alertDialog.setTitle("Datos inválidos");
+		alertDialog.setMessage("Necesita ser horario correcto y encontrarse dentro de CUCEI");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				// here you can add functions
+				dialog.cancel();
+			}
+		});
+		alertDialog.show();  //<-- See This!
+		// throw  new IllegalArgumentException("Hora o ubicación no válida");
+
 	}
 
 	@Override

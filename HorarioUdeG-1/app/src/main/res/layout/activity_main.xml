@@ -12,7 +12,7 @@
         android:paddingLeft="0dp"
         android:paddingRight="0dp"
         android:paddingTop="0dp"
-        tools:context="com.example.macmini1_cuceimobile.horarioudeg.MainActivity">
+        tools:context=".LoginActivity">
 
         <LinearLayout
             android:orientation="vertical"

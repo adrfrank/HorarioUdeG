@@ -27,7 +27,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class Main2Activity extends Activity implements ExpandableListView.OnChildClickListener {
+/*
+*   Actividad que tiene el horario de la semana
+* */
+public class HorarioActivity extends Activity implements ExpandableListView.OnChildClickListener {
 
     private Button boton;
     private ExpandableListView expandableList;
@@ -69,7 +72,7 @@ public class Main2Activity extends Activity implements ExpandableListView.OnChil
        /* expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(Main2Activity.this,"click",Toast.LENGTH_LONG).show();
+                Toast.makeText(HorarioActivity.this,"click",Toast.LENGTH_LONG).show();
                 return true;
             }
         });
@@ -132,14 +135,16 @@ public class Main2Activity extends Activity implements ExpandableListView.OnChil
     }
     private void cerrarSesion() {
         Conexion db = new Conexion(this, "default", null, 1);
-        database = db.getWritableDatabase();
-        database.execSQL("DELETE FROM alumno");
-        database.execSQL("DELETE FROM materias");
-        database.close();
+        //database = db.getWritableDatabase();
+        db.deleteData();
+        //TODO: Delete this if it is not necesary
+        //database.execSQL("DELETE FROM alumno");
+        //database.execSQL("DELETE FROM materias");
+        //database.close();
         db.close();
         Log.i("SIIAU", "Cerrar Sesion");
         System.out.println("Borrado");
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
         finish();
     }
@@ -249,6 +254,7 @@ public class Main2Activity extends Activity implements ExpandableListView.OnChil
         db.close();
         return arreglo;
     }
+
     private void agregarRecordatorio(String materia, String horario,
                                      String location, String inicio, String fin, String dia) {
 
@@ -469,7 +475,6 @@ public class Main2Activity extends Activity implements ExpandableListView.OnChil
         return aux2;
     }
 
-
     private int RESULT_LOAD_IMAGE = 1;
 
     @Override
@@ -508,7 +513,7 @@ public class Main2Activity extends Activity implements ExpandableListView.OnChil
     @Override
     public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
         if (parent.isGroupExpanded(groupPosition))
-        Toast.makeText(Main2Activity.this,"click",Toast.LENGTH_LONG).show();
+        Toast.makeText(HorarioActivity.this,"click",Toast.LENGTH_LONG).show();
        // Log.d("",childItems.get(parentItems.get(groupPosition)).get(childPosition));
         return true;
         //return false;

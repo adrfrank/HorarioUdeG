@@ -17,4 +17,8 @@
     <string name="cerrarSesion">Cerrar sesion</string>
     <string name="title_activity_horario_semanal">HorarioSemanal</string>
     <string name="cambiarVista">Cambiar vista</string>
+    <string name="tutorDialogMessage">Selecciona la opción \'Solicitar tutor\' para enviar una solicitud de tutor</string>
+    <string name="tutorDialogTitle">SOLICITA UN TUTOR</string>
+    <string name="tutorDialogAccept">Solicitar tutor</string>
+    <string name="tutorDialogCancel">Cancelar</string>
 </resources>
