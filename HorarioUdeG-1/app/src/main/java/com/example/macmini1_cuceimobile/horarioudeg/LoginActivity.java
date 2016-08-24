@@ -106,11 +106,11 @@ public class LoginActivity extends Activity{
 
         //TODO: Verificar si esto se necesita
 
-//        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.layout_menu);
-//        ListView listView = (ListView) findViewById(R.id.lista_drawer);
-//        ArrayList<String> arrayList = new ArrayList<String>();
-//        arrayList.add("");
-//        listView.setAdapter(new AdaptadorDrawer(this, arrayList, linearLayoutOculto));
+        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.layout_menu);
+        ListView listView = (ListView) findViewById(R.id.lista_drawer);
+        ArrayList<String> arrayList = new ArrayList<String>();
+        arrayList.add("");
+        listView.setAdapter(new AdaptadorDrawer(this, arrayList, linearLayoutOculto));
 
 
 
