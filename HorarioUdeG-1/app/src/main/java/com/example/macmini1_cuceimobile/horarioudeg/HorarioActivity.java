@@ -64,33 +64,26 @@ public class HorarioActivity extends Activity implements ExpandableListView.OnCh
         for(int i=0; i < adapter.getGroupCount(); i++)
             expandableList.expandGroup(i);
 
-        ImageView  botnmenu =(ImageView) findViewById(R.id.botnmenu);
+//        ImageView  botnmenu =(ImageView) findViewById(R.id.botnmenu);
 
         final DrawerLayout main2Layout = (DrawerLayout) findViewById(R.id.drawer);
-        //Activiti_info
 
-       /* expandableList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                Toast.makeText(HorarioActivity.this,"click",Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
-*/
         expandableList.setOnChildClickListener(this);
-        botnmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                main2Layout.openDrawer(Gravity.LEFT);
-            }
-        });
+//        botnmenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                main2Layout.openDrawer(Gravity.LEFT);
+//            }
+//        });
 
-        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.linearLayout);
-        ListView listView = (ListView) findViewById(R.id.lista_main2);
-        ArrayList<String> arrayList = new ArrayList<String>();
-        arrayList.add("");
 
-         listView.setAdapter(new AdaptadorHorario(this, arrayList, linearLayoutOculto));
+//            Esto ocula la ventana lateral
+//        LinearLayout linearLayoutOculto = (LinearLayout) findViewById(R.id.linearLayout);
+//        ListView listView = (ListView) findViewById(R.id.lista_main2);
+//        ArrayList<String> arrayList = new ArrayList<String>();
+//        arrayList.add("");
+//
+//         listView.setAdapter(new AdaptadorHorario(this, arrayList, linearLayoutOculto));
 
 
     }
@@ -133,14 +126,10 @@ public class HorarioActivity extends Activity implements ExpandableListView.OnCh
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void cerrarSesion() {
         Conexion db = new Conexion(this, "default", null, 1);
-        //database = db.getWritableDatabase();
         db.deleteData();
-        //TODO: Delete this if it is not necesary
-        //database.execSQL("DELETE FROM alumno");
-        //database.execSQL("DELETE FROM materias");
-        //database.close();
         db.close();
         Log.i("SIIAU", "Cerrar Sesion");
         System.out.println("Borrado");
@@ -148,11 +137,7 @@ public class HorarioActivity extends Activity implements ExpandableListView.OnCh
         startActivity(i);
         finish();
     }
-    /*
-    private void cambiarVista(){
-        Intent i = new Intent(this, HorarioSemanal.class);
-        startActivity(i);
-    }*/
+
     public void setGroupParents() {// Los dias de la semana
         parentItems.add("Datos del Alumno");
         parentItems.add("Lunes");

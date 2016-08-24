@@ -23,13 +23,13 @@ public class AdaptadorHorario extends ArrayAdapter<String>{
         this.linearLayout = linearLayout;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        LayoutInflater vi;
-        vi = LayoutInflater.from(getContext());
-        convertView = vi.inflate( R.layout.activity_main2, null);
-
-        return convertView;
-    }
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//
+//        LayoutInflater vi;
+//        vi = LayoutInflater.from(getContext());
+//        convertView = vi.inflate( R.layout.activity_main2, null);
+//
+//        return convertView;
+//    }
 }

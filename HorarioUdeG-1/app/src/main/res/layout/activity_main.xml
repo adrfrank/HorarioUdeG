@@ -171,7 +171,8 @@
             android:layout_alignWithParentIfMissing="false"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/btnmenu" />
+            android:id="@+id/btnmenu"
+            android:visibility="visible" />
 
     </RelativeLayout>
 
